@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: LoginPageComponent,
+    component: HomeComponent,
   },
   /*{
     path: 'countries',
