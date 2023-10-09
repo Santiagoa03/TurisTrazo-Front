@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class LoginPageComponent {
 
+  prueba(): void {
+    console.log('Hola');
+  }
+
 }
