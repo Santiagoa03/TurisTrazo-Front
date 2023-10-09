@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { InformationComponent } from './components/information/information.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { CardComponent } from './components/card/card.component';
 
 
 
@@ -15,7 +16,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     Page404Component,
     InformationComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
   ],
   exports:[
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    CardComponent
   ]
 })
 export class SharedModule { }

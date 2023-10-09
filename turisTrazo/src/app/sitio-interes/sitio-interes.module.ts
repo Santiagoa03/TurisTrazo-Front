@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SitioInteresRoutingModule } from './sitio-interes-routing.module';
 import { SitioInteresPageComponent } from './pages/sitio-interes-page/sitio-interes-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { SitioInteresPageComponent } from './pages/sitio-interes-page/sitio-inte
   ],
   imports: [
     CommonModule,
-    SitioInteresRoutingModule
+    SitioInteresRoutingModule,
+    SharedModule
+
   ]
 })
 export class SitioInteresModule { }
