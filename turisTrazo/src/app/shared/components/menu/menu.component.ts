@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
 
-  isCollapsed = false;
-
+  isCollapsed: boolean = false;
+  logueado: boolean = false;
+  nombre: string = 'Prueba';
   constructor(private router: Router) {
 
   }
