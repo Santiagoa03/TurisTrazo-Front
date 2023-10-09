@@ -18,6 +18,16 @@ const routes: Routes = [
 
   },
   {
+    path: 'educate',
+    loadChildren: () => import('./turismo-responsable/turismo-responsable.module').then((m) => m.TurismoResponsableModule),
+
+  },
+  {
+    path: 'resena_calificacion',
+    loadChildren: () => import('./resena-calificacion/resena-calificacion.module').then((m) => m.ResenaCalificacionModule),
+
+  },
+  {
     path: 'tour',
     loadChildren: () => import('./tour/tour.module').then((m) => m.TourModule),
 
