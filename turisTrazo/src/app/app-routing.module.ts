@@ -4,6 +4,8 @@ import { Page404Component } from './shared/components/page404/page404.component'
 import { HomePageComponent } from './shared/pages/home-page/home-page.component';
 
 const routes: Routes = [
+
+
   {
     path: 'home',
     component: HomePageComponent,
