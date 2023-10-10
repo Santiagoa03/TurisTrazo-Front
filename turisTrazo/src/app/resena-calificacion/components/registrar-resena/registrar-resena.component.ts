@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class RegistrarResenaComponent {
 
+  mostrarFormularioResena: boolean = false;
+
+  toggleFormulario(): void {
+    this.mostrarFormularioResena = !this.mostrarFormularioResena;
+  }
+
 }

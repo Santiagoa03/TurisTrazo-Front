@@ -1,0 +1,60 @@
+<div class="row mt-5 p-5">
+    <button type="submit" (click)="toggleFormulario()" class=" dark:bg-gray-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-700 transition
+        duration-300">Agregar
+        Reseña <i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
+</div>
+
+<div class="flex mt-10 justify-center container m-auto " *ngIf="mostrarFormularioResena">
+    <div
+        class="bg-white rounded-lg shadow-xl  md:p-2 lg:p-2 w-full md:w-full lg:w-full mx-auto mb-4 p-10 pl-20 shadow-gray-900">
+        <h1 class="text-3xl md:text-4xl font-semibold text-center mb-6">Escribe tu reseña</h1>
+
+        <form>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Columna 1 -->
+                <div>
+                    <div class="mb-4">
+                        <label for="nombre" class="block text-gray-700 font-semibold mb-2">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="w-full border rounded-lg px-4 py-2" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full border rounded-lg px-4 py-2" />
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div>
+                    <div class="mb-4">
+                        <label for="titulo" class="block text-gray-700 font-semibold mb-2">Título</label>
+                        <input type="text" id="titulo" name="titulo" class="w-full border rounded-lg px-4 py-2" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="barrio" class="block text-gray-700 font-semibold mb-2">Barrio</label>
+                        <input type="text" id="barrio" name="barrio" class="w-full border rounded-lg px-4 py-2" />
+                    </div>
+                </div>
+
+                <!-- Columna 3 -->
+                <div>
+                    <div class="mb-4">
+                        <label for="tour" class="block text-gray-700 font-semibold mb-2">Tour</label>
+                        <input type="text" id="tour" name="tour" class="w-full border rounded-lg px-4 py-2" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="descripcion" class="block text-gray-700 font-semibold mb-2">Describe</label>
+                        <textarea id="descripcion" name="descripcion"
+                            class="w-full border rounded-lg px-4 py-2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de agregar reseña -->
+            <div class="mt-6">
+                <button type="submit"
+                    class=" dark:bg-gray-900 text-white font-semibold px-6 py-2 rounded-lg hover:dark:bg-gray-700 transition duration-300">Agregar
+                    Reseña</button>
+            </div>
+        </form>
+    </div>
+</div>
