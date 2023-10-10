@@ -7,6 +7,7 @@ import { InformationComponent } from './components/information/information.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
+import { ServicioHomeComponent } from './components/servicio-home/servicio-home.component';
 
 
 
@@ -17,7 +18,8 @@ import { CardComponent } from './components/card/card.component';
     InformationComponent,
     FooterComponent,
     HomePageComponent,
-    CardComponent
+    CardComponent,
+    ServicioHomeComponent
   ],
   imports: [
     CommonModule,
