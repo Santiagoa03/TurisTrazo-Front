@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { TurismoResponsableRoutingModule } from './turismo-responsable-routing.module';
 import { TurismoResponsablePageComponent } from './pages/turismo-responsable-page/turismo-responsable-page.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 
 @NgModule({
   declarations: [
-    TurismoResponsablePageComponent
+    TurismoResponsablePageComponent,
+    InicioComponent
   ],
   imports: [
     CommonModule,
