@@ -7,13 +7,13 @@
 
             <!-- Nombre de la persona que publicó la reseña -->
             <div>
-                <p class="text-lg font-semibold">John Doe</p>
+                <p class="text-lg font-semibold">{{resena?.turista?.nombre}}</p>
                 <p class="text-gray-600">5 minutes ago</p>
             </div>
         </div>
 
         <!-- Título de la reseña -->
-        <h2 class="text-xl md:text-2xl font-semibold mb-2">Título de la Reseña</h2>
+        <h2 class="text-xl md:text-2xl font-semibold mb-2">{{resena?.titulo}}</h2>
 
         <!-- Calificación con estrellas (puedes personalizar el estilo) -->
         <div class="flex items-center mb-4">
@@ -30,11 +30,10 @@
         </div>
 
         <!-- Contenido de la reseña -->
-        <p class="text-gray-700">Contenido de la reseña Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus vehicula auctor quam, vel ultrices purus.</p>
+        <p class="text-gray-700">{{resena?.descripcion}}</p>
 
         <!-- Imagen (opcional, muestra solo si tienes una URL de imagen) -->
-        <div class="mt-4" *ngIf="!imgagenUrl">
+        <div class="mt-4" *ngIf="imgagenUrl">
             <img class="w-1/2" src="https://via.placeholder.com/400x200" alt="Imagen de la reseña" />
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Resena } from 'src/app/interface/models-type';
 
 @Component({
   selector: 'resenas-list',
@@ -8,5 +9,12 @@ import { Component, Input } from '@angular/core';
 export class ResenasComponent {
   @Input()
   imgagenUrl!: string;
+
+  @Input()
+  resena?: Resena;
+  
+
+
+
 
 }

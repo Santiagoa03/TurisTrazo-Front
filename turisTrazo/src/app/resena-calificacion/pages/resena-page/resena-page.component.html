@@ -1,6 +1,7 @@
 <resenas-inicio></resenas-inicio>
 
-<resena-registrar></resena-registrar> 
+<resena-registrar></resena-registrar>
 
-<resenas-list></resenas-list>
-
+<div *ngFor="let resena of listResenas">
+    <resenas-list [resena]="resena"></resenas-list>
+</div>
