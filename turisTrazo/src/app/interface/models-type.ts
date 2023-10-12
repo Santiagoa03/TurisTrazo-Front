@@ -5,6 +5,7 @@ export interface Resena {
     turista: Usuario;
     titulo: string;
     descripcion: string;
+    fecha: Date;
 }
 
 export interface Tour {
@@ -12,6 +13,7 @@ export interface Tour {
     barrioMedellin: Barrio;
     guia: Guia;
     descripcion: string;
+    nombre: string;
 }
 
 export interface Barrio {

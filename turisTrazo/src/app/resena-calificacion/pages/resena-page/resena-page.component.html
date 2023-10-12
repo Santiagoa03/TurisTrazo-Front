@@ -2,6 +2,8 @@
 
 <resena-registrar></resena-registrar>
 
-<div *ngFor="let resena of listResenas">
-    <resenas-list [resena]="resena"></resenas-list>
+<div class="flex flex-wrap -mx-4 m-auto">
+    <div *ngFor="let resena of listResenas" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4 m-auto">
+        <resenas-list [resena]="resena"></resenas-list>
+    </div>
 </div>

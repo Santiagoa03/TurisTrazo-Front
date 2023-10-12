@@ -9,6 +9,7 @@ import { Resena } from 'src/app/interface/models-type';
 export class ResenaService {
 
   URL_API: string = "/api/resenas"
+  
   constructor(private http: HttpClient) { }
 
   getAllResena(): Observable<Resena[]> {
