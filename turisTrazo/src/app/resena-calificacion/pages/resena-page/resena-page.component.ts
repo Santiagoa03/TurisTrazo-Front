@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResenaService } from '../../services/resena.service';
+import { ResenaService } from '../../../services/resena.service';
 import { Resena } from 'src/app/interface/models-type';
 
 @Component({
