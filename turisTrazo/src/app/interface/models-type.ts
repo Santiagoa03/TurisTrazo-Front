@@ -9,6 +9,11 @@ export interface Resena {
     estrella: number;
 }
 
+export interface Credenciales {
+    "email"?: string;
+    "password"?: string
+}
+
 export interface Tour {
     id: number;
     barrioMedellin: Barrio;
