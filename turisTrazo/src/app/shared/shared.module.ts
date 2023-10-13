@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
 import { ServicioHomeComponent } from './components/servicio-home/servicio-home.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 
 
@@ -19,7 +20,8 @@ import { ServicioHomeComponent } from './components/servicio-home/servicio-home.
     FooterComponent,
     HomePageComponent,
     CardComponent,
-    ServicioHomeComponent
+    ServicioHomeComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ServicioHomeComponent } from './components/servicio-home/servicio-home.
   exports:[
     MenuComponent,
     FooterComponent,
-    CardComponent
+    CardComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule { }
