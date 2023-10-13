@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ConfiguracionUsuarioComponent } from './components/configuracion-usuario/configuracion-usuario.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({

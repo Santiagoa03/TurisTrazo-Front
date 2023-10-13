@@ -6,6 +6,7 @@ export interface Resena {
     titulo: string;
     descripcion: string;
     fecha: Date;
+    estrella: number;
 }
 
 export interface Tour {
