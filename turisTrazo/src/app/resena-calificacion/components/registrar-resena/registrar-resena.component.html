@@ -9,7 +9,7 @@
         class="bg-white rounded-lg shadow-xl  md:p-2 lg:p-2 w-full md:w-full lg:w-full mx-auto mb-4 p-10 pl-20 shadow-gray-900">
         <h1 class="text-2xl md:text-2x1 font-semibold text-center mb-6">Escribe tu reseña</h1>
 
-        <form [formGroup]="formularioResena" (ngSubmit)="sendForm()">
+        <form [formGroup]="formResena" (ngSubmit)="sendForm()">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Columna 1 -->
                 <div>
@@ -18,18 +18,18 @@
                         <label for="titulo" class="block text-gray-700 font-semibold mb-2">Título</label>
                         <input type="text" id="titulo" name="titulo" class="w-full border rounded-lg px-4 py-2"
                             formControlName="titulo"
-                            [ngClass]="{ 'border-red-500': formularioResena!.get('titulo')?.invalid  && formSend }" />
-                        <ng-container *ngIf="formularioResena!.get('titulo')?.invalid && formSend">
+                            [ngClass]="{ 'border-red-500': formResena!.get('titulo')?.invalid  && formSend }" />
+                        <ng-container *ngIf="formResena!.get('titulo')?.invalid && formSend">
                             <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
                         </ng-container>
                     </div>
                     <div class="mb-4">
                         <label for="tour" class="block text-gray-700 font-semibold mb-2">Tour</label>
                         <select id="tour" name="tour" class="w-full border rounded-lg px-4 py-2" formControlName="tour"
-                            [ngClass]="{ 'border-red-500': formularioResena!.get('tour')?.invalid  && formSend }">
+                            [ngClass]="{ 'border-red-500': formResena!.get('tour')?.invalid  && formSend }">
                             <option *ngFor="let tour of listTour" [value]="tour.id">{{tour.nombre}}</option>
                         </select>
-                        <ng-container *ngIf="formularioResena!.get('tour')?.invalid && formSend">
+                        <ng-container *ngIf="formResena!.get('tour')?.invalid && formSend">
                             <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
                         </ng-container>
                     </div>
@@ -41,9 +41,9 @@
                         <label for="descripcion" class="block text-gray-700 font-semibold mb-2">Descripción</label>
                         <textarea id="descripcion" name="descripcion" formControlName="descripcion"
                             class="w-full border h-10 rounded-lg px-4 py-2"
-                            [ngClass]="{ 'border-red-500': formularioResena!.get('descripcion')?.invalid  && formSend }">
+                            [ngClass]="{ 'border-red-500': formResena!.get('descripcion')?.invalid  && formSend }">
                             ></textarea>
-                        <ng-container *ngIf="formularioResena!.get('descripcion')?.invalid && formSend">
+                        <ng-container *ngIf="formResena!.get('descripcion')?.invalid && formSend">
                             <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
                         </ng-container>
                     </div>
@@ -55,16 +55,16 @@
                                 <input type="radio" class="sr-only" [id]="'star-' + star"
                                     formControlName="selectedRating" [value]="star" name="selectedRating">
                                 <label [for]="'star-' + star" class="text-2xl cursor-pointer"
-                                    [ngClass]="{'text-yellow-400': star <= (formularioResena!.get('selectedRating')!.value || 0), 'text-gray-300': star > (formularioResena!.get('selectedRating')!.value || 0)}">
+                                    [ngClass]="{'text-yellow-400': star <= (formResena!.get('selectedRating')!.value || 0), 'text-gray-300': star > (formResena!.get('selectedRating')!.value || 0)}">
                                     &#9733;
                                 </label>
                             </ng-container>
                         </div>
 
                         <p class="text-gray-700">Calificación seleccionada:
-                            {{ formularioResena!.get('selectedRating')?.value || 0 }}
+                            {{ formResena!.get('selectedRating')?.value || 0 }}
                         </p>
-                        <ng-container *ngIf="formularioResena!.get('selectedRating')?.invalid && formSend">
+                        <ng-container *ngIf="formResena!.get('selectedRating')?.invalid && formSend">
                             <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
                         </ng-container>
                     </div>

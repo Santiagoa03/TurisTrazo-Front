@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Usuario } from './../../../interface/models-type';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Tour } from 'src/app/interface/models-type';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Resena, Tour } from 'src/app/interface/models-type';
 import { NotificationService } from 'src/app/services/notification.service';
+import { ResenaService } from 'src/app/services/resena.service';
 import { TourService } from 'src/app/services/tour.service';
 
 @Component({
@@ -13,8 +16,9 @@ export class RegistrarResenaComponent implements OnInit {
 
   mostrarFormularioResena: boolean = false;
   listTour: Tour[] = [];
+  user!: Usuario | null;
 
-  formularioResena = this.fb.group({
+  formResena = this.fb.group({
     titulo: ['', Validators.required],
     tour: [null, Validators.required],
     descripcion: ['', Validators.required],
@@ -23,7 +27,7 @@ export class RegistrarResenaComponent implements OnInit {
 
   formSend: boolean = false;
 
-  constructor(private tourService: TourService, private fb: FormBuilder, private toast: NotificationService) { }
+  constructor(private tourService: TourService, private fb: FormBuilder, private toast: NotificationService, private authService: AuthService, private resenaService: ResenaService) { }
 
   ngOnInit(): void {
     this.tourService.getAllTour().subscribe(tour => this.listTour = tour);
@@ -35,11 +39,32 @@ export class RegistrarResenaComponent implements OnInit {
   }
 
   sendForm(): void {
+
     this.formSend = true;
-    if (this.formularioResena.invalid) return;
+    if (this.formResena.invalid) return;
+
+    this.user = this.authService.getUser();
+    if (this.user != null && this.user != undefined) {
+      const tour: Tour = {
+        id: this.formResena.get("tour")?.value || 0
+      }
+      const resena: Resena = {
+        id: 35,
+        turista: this.user,
+        descripcion: this.formResena.get("descripcion")?.value || '',
+        estrella: this.formResena.get("selectedRating")?.value || 0,
+        titulo: this.formResena.get("titulo")?.value || '',
+        tour: tour,
+        fecha: new Date(),
+      }
+      this.resenaService.saveResena(resena).subscribe((resp) => {
+
+      })
+    } else {
+
+      return;
+    }
     this.toast.showNotification("Prueba", "Hola")
-
-
 
   }
 

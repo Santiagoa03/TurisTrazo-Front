@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResenaService } from '../../../services/resena.service';
 import { Resena } from 'src/app/interface/models-type';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-resena-page',
@@ -9,13 +10,13 @@ import { Resena } from 'src/app/interface/models-type';
 })
 export class ResenaPageComponent implements OnInit {
 
-  listResenas: Resena[] = [];
+  isTourist!: Boolean;
 
-  constructor(private resenaService: ResenaService) { }
+  constructor(private resenaService: ResenaService, private authService: AuthService) { }
 
 
   ngOnInit(): void {
-    this.resenaService.getAllResena().subscribe(resenas => this.listResenas = resenas);
+    this.isTourist = this.authService.isTourist();
   }
 
 

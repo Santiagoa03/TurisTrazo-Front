@@ -13,23 +13,22 @@ export class LoginPageComponent {
 
   private credenciales!: Credenciales;
 
+  formSend: boolean = false;
   formLogin = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
-
   constructor(private authService: AuthService, private fb: FormBuilder) { }
 
-  prueba(): void {
-
+  sendFormLogin(): void {
+    this.formSend = true;
     if (this.formLogin.invalid) return;
 
     this.credenciales = {
       email: this.formLogin.get('email')?.value || '',
       password: this.formLogin.get('password')?.value || ''
     }
-    console.log(this.credenciales)
 
     this.authService.login(this.credenciales);
 
