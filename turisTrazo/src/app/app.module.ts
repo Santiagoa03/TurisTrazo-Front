@@ -4,21 +4,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } 
 import { HttpInterceptor } from './shared/interceptors/http.interceptor';
+import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CustomToastComponent} from './shared/components/notification/notification.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AuthModule,
     SharedModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      toastComponent:CustomToastComponent,
+      timeOut: 5000 ,
+    })
   ],
   providers: [
     {
@@ -26,6 +33,7 @@ import { HttpInterceptor } from './shared/interceptors/http.interceptor';
       useClass: HttpInterceptor,
       multi: true
     },
+
   ],
   bootstrap: [AppComponent]
 })

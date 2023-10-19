@@ -1,10 +1,9 @@
 import { Usuario } from './../../../interface/models-type';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Resena, Tour } from 'src/app/interface/models-type';
-import { NotificationService } from 'src/app/services/notification.service';
 import { ResenaService } from 'src/app/services/resena.service';
 import { TourService } from 'src/app/services/tour.service';
 
@@ -28,7 +27,7 @@ export class RegistrarResenaComponent implements OnInit {
 
   formSend: boolean = false;
 
-  constructor(private tourService: TourService, private fb: FormBuilder, private toast: NotificationService, private authService: AuthService, private resenaService: ResenaService) { }
+  constructor(private toastr: ToastrService, private tourService: TourService, private fb: FormBuilder, private authService: AuthService, private resenaService: ResenaService) { }
 
   ngOnInit(): void {
     this.tourService.getAllTour().subscribe(tour => this.listTour = tour);
@@ -59,10 +58,10 @@ export class RegistrarResenaComponent implements OnInit {
         fecha: new Date(),
       }
       this.resenaService.saveResena(resena).subscribe((resp) => {
+        this.toastr.success("La Reseña fue creada con éxito");
         this.formResena.reset();
         this.formSend = false;
         this.showFormResena = false;
-        alert("Reseña exitosa")
       })
     } else {
 

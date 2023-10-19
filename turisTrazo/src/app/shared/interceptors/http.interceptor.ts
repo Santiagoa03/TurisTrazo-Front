@@ -9,12 +9,15 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class HttpInterceptor implements HttpInterceptor {
 
   private cookieService = inject(CookieService);
   private router = inject(Router);
+
+  constructor(private toastr: ToastrService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -43,7 +46,7 @@ export class HttpInterceptor implements HttpInterceptor {
           this.router.navigate(['/not-logged']);
         } else if (error.name === "HttpErrorResponse"
         ) {
-          alert("Error en la solicitud, por favor contáctanos para más información")
+          this.toastr.error("En este momento no podemos atender tu solicitud. Inténtalo más tarde");
         }
         return throwError(error);
       })

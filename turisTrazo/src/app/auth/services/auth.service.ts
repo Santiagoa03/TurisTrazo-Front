@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { Credenciales } from 'src/app/interface/models-type';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( private http: HttpClient, private cookie: CookieService, private router: Router, private credentialsBearerService: CredentialsBearerService) { }
+  constructor(private toastr: ToastrService, private http: HttpClient, private cookie: CookieService, private router: Router, private credentialsBearerService: CredentialsBearerService) { }
 
   URL_API_LOGIN: string = "/login"
   URL_API: string = "/api/users"
@@ -38,7 +39,7 @@ export class AuthService {
           this.cookie.set("Bearer", token.replace("Bearer", "").trim());
         }
       }, error => {
-        alert("Usuario o contraseña inválidos");
+        this.toastr.error("Usuario o contraseña incorrectos")
       }, () => {
 
         this.http.get<Usuario>(`${this.URL_API}/email/${credenciales.email}`, { headers: this.options.headers }).subscribe((resp) => {

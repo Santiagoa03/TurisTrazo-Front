@@ -4,6 +4,7 @@ import { TipoUsuario, Usuario } from 'src/app/interface/models-type';
 import { tap } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-page',
@@ -30,7 +31,7 @@ export class RegisterPageComponent implements OnInit {
   guiaId: number = 0;
 
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private toastr: ToastrService, private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.authService
@@ -70,7 +71,7 @@ export class RegisterPageComponent implements OnInit {
 
     this.authService.saveUser(user).subscribe(() => {
       this.router.navigateByUrl("/auth/login");
-      alert("Usuario Guardado con exito")
+      this.toastr.success("Usuario creado con éxito")
     })
 
   }
