@@ -107,10 +107,13 @@
         </div>
         <div>
           <label for="neighborhoodTour" class="block text-sm font-medium leading-6 text-gray-900">Barrio a Guiar</label>
-          <input id="neighborhoodTour" name="neighborhoodTour" type="text" autocomplete="current-password" required
-            [ngClass]="{ 'ring-red-500': formRegister!.get('neighborhoodTour')?.invalid && formSend }"
+          <select id="neighborhoodTour" name="neighborhoodTour" class="w-full border rounded-lg px-4 py-2"
             formControlName="neighborhoodTour"
+            [ngClass]="{ 'ring-red-500': formRegister!.get('neighborhoodTour')?.invalid && formSend }"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option *ngFor="let neighborhoodTour of listNeighborhood" [value]="neighborhoodTour.codigoPostal">
+              {{neighborhoodTour.nombre}}</option>
+          </select>
           <ng-container *ngIf="formRegister!.get('neighborhoodTour')?.hasError('required') && formSend">
             <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
           </ng-container>

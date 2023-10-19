@@ -1,6 +1,7 @@
+import { NeighborhoodService } from './../../../services/neighborhood.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { TipoUsuario, Usuario } from 'src/app/interface/models-type';
+import { Barrio, Guia, TipoUsuario, Usuario } from 'src/app/interface/models-type';
 import { tap } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterPageComponent implements OnInit {
 
   listUserType: TipoUsuario[] = [];
+  listNeighborhood: Barrio[] = [];
+
   formSend: boolean = false;
   formRegister = this.fb.group({
     name: ['', Validators.required],
@@ -29,9 +32,9 @@ export class RegisterPageComponent implements OnInit {
   });
 
   guiaId: number = 0;
+  guide: Guia | null = null;
 
-
-  constructor(private toastr: ToastrService, private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private toastr: ToastrService, private authService: AuthService, private fb: FormBuilder, private router: Router, private neighborhoodService: NeighborhoodService) { }
 
   ngOnInit(): void {
     this.authService
@@ -50,6 +53,11 @@ export class RegisterPageComponent implements OnInit {
       .subscribe(resp => {
         this.listUserType = resp;
       });
+
+    this.neighborhoodService.getAllNeighborhood().subscribe((resp) => {
+      this.listNeighborhood = resp;
+    })
+
   }
 
 
@@ -68,14 +76,34 @@ export class RegisterPageComponent implements OnInit {
       correo: this.formRegister.get("email")?.value || '',
       tipoUsuario: userType,
     }
+
+    console.log(userType);
+    console.log(this.guiaId);
+    console.log(Number(userType.id) === this.guiaId)
+    if (Number(userType.id) === this.guiaId) {
+      console.log("Entró")
+      const neighborhoodGuide: Barrio = {
+        codigoPostal: Number(this.formRegister.get("neighborhoodTour")?.value) || 0
+      }
+      const guide: Guia = {
+        barrioResidencia: this.formRegister.get("neighborhood")?.value || '',
+        ciudadResidencia: this.formRegister.get("city")?.value || '',
+        barrioGuia: neighborhoodGuide,
+        ingles: Boolean(this.formRegister.get("english")?.value),
+        usuario: user
+      }
+      this.guide = guide;
+    }
     if (user.correo) {
 
       this.authService.alreadyEmail(user.correo).subscribe((resp) => {
 
         if (!resp.existe) {
-          this.authService.saveUser(user).subscribe(() => {
+          this.authService.saveUser(user, this.guide).subscribe(() => {
             this.router.navigateByUrl("/auth/login");
-            this.toastr.success("Usuario creado con éxito")
+            this.toastr.success("Usuario creado con éxito");
+            this.formRegister.reset();
+            this.guide = null;
           })
         } else {
           this.toastr.error("El correo ingresado ya se encuentra registrado");
@@ -93,16 +121,20 @@ export class RegisterPageComponent implements OnInit {
       this.formRegister.get("english")?.addValidators(Validators.required);
       this.formRegister.get("neighborhoodTour")?.addValidators(Validators.required);
       this.formRegister.get("city")?.addValidators(Validators.required);
+      this.formRegister.get("neighborhood")?.addValidators(Validators.required);
 
     } else {
       this.formRegister.get("english")?.clearValidators();
       this.formRegister.get("neighborhoodTour")?.clearValidators();
       this.formRegister.get("city")?.clearValidators();
+      this.formRegister.get("neighborhood")?.clearValidators();
 
     }
 
-    this.formRegister.updateValueAndValidity();
-
+    this.formRegister.get("english")?.updateValueAndValidity();
+    this.formRegister.get("neighborhoodTour")?.updateValueAndValidity();
+    this.formRegister.get("city")?.updateValueAndValidity();
+    this.formRegister.get("neighborhood")?.updateValueAndValidity();
 
   }
 
