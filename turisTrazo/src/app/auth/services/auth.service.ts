@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { Credenciales } from 'src/app/interface/models-type';
 import { ToastrService } from 'ngx-toastr';
+import { Already } from '../interfaces/auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,6 @@ export class AuthService {
       }, () => {
 
         this.http.get<Usuario>(`${this.URL_API}/email/${credenciales.email}`, { headers: this.options.headers }).subscribe((resp) => {
-
           this.cookie.set("id", String(resp.numeroIdentidad));
           this.cookie.set("name", String(resp.nombre));
           this.cookie.set("type_user", String(resp.tipoUsuario!.tipoUsuario));
@@ -63,6 +63,10 @@ export class AuthService {
 
   userType(): Observable<TipoUsuario[]> {
     return this.http.get<TipoUsuario[]>(`${this.URL_API}/user-type`);
+  }
+
+  alreadyEmail(email: string): Observable<Already> {
+    return this.http.get<Already>(`${this.URL_API}/verify/${email}`);
   }
 
 

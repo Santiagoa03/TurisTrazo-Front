@@ -68,11 +68,21 @@ export class RegisterPageComponent implements OnInit {
       correo: this.formRegister.get("email")?.value || '',
       tipoUsuario: userType,
     }
+    if (user.correo) {
 
-    this.authService.saveUser(user).subscribe(() => {
-      this.router.navigateByUrl("/auth/login");
-      this.toastr.success("Usuario creado con éxito")
-    })
+      this.authService.alreadyEmail(user.correo).subscribe((resp) => {
+
+        if (!resp.existe) {
+          this.authService.saveUser(user).subscribe(() => {
+            this.router.navigateByUrl("/auth/login");
+            this.toastr.success("Usuario creado con éxito")
+          })
+        } else {
+          this.toastr.error("El correo ingresado ya se encuentra registrado");
+        }
+      })
+
+    }
 
   }
 

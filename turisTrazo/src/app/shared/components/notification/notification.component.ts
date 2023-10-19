@@ -65,7 +65,6 @@ export class CustomToastComponent extends Toast implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.toastPackage.toastType);
     // Realizar la validación aquí para determinar el tipo de notificación
     if (this.toastPackage.toastType && this.toastPackage.toastType) {
       this.type = this.toastPackage.toastType;
