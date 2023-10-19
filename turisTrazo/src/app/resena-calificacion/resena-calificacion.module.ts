@@ -10,13 +10,15 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { FormsModule } from '@angular/forms'; //
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ResenaListComponent } from './components/resena-list/resena-list.component';
 @NgModule({
   declarations: [
     ResenaPageComponent,
     ResenaComponent,
     ResenasComponent,
     RegistrarResenaComponent,
-    InicioComponent
+    InicioComponent,
+    ResenaListComponent
   ],
   imports: [
     CommonModule,

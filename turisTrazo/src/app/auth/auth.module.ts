@@ -8,7 +8,6 @@ import { ConfiguracionUsuarioComponent } from './components/configuracion-usuari
 import { FormsModule } from '@angular/forms'; //
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     RegisterPageComponent,
@@ -19,12 +18,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     RegisterPageComponent,
     LoginPageComponent
-  ]
+  ],
+  providers:
+    [
+      
+    ]
 
 })
 export class AuthModule { }

@@ -1,6 +1,6 @@
 
 export interface Resena {
-    id: number;
+    id?: number;
     tour: Tour;
     turista: Usuario;
     titulo: string;
@@ -16,10 +16,10 @@ export interface Credenciales {
 
 export interface Tour {
     id: number;
-    barrioMedellin: Barrio;
-    guia: Guia;
-    descripcion: string;
-    nombre: string;
+    barrioMedellin?: Barrio;
+    guia?: Guia;
+    descripcion?: string;
+    nombre?: string;
 }
 
 export interface Barrio {
@@ -39,13 +39,13 @@ export interface Guia {
 export interface Usuario {
     numeroIdentidad: number;
     nombre: string;
-    correo: string;
-    celular: string;
-    contraseña: string;
-    tipoUsuario: TipoUsuario;
+    correo?: string;
+    celular?: string;
+    contrasena?: string;
+    tipoUsuario?: TipoUsuario;
 }
 
 export interface TipoUsuario {
     id: number;
-    tipoUsuario: string;
+    tipoUsuario?: string;
 }

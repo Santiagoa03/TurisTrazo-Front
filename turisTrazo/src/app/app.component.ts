@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core'; 
-import { Router,NavigationEnd } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Router,NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   showMenu: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -23,5 +24,8 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+
+
 
 }
