@@ -18,6 +18,11 @@ export class HttpInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
+    // Verifica si la URL es /login y si es así, no apliques el interceptor.
+    if (request.url.endsWith('/login')) {
+      return next.handle(request);
+    }
+
     const isMultipart = request.body instanceof FormData;
 
     let headers: HttpHeaders;
@@ -38,7 +43,7 @@ export class HttpInterceptor implements HttpInterceptor {
           this.router.navigate(['/not-logged']);
         } else if (error.name === "HttpErrorResponse"
         ) {
-          this.router.navigate(['/server-error']);
+          alert("Error en la solicitud, por favor contáctanos para más información")
         }
         return throwError(error);
       })

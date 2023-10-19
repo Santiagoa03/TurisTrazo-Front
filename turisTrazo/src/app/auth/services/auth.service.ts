@@ -12,7 +12,7 @@ import { Credenciales } from 'src/app/interface/models-type';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private cookie: CookieService, private router: Router, private credentialsBearerService: CredentialsBearerService) { }
+  constructor( private http: HttpClient, private cookie: CookieService, private router: Router, private credentialsBearerService: CredentialsBearerService) { }
 
   URL_API_LOGIN: string = "/login"
   URL_API: string = "/api/users"

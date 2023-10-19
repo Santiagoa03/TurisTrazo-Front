@@ -1,6 +1,7 @@
 import { Usuario } from './../../../interface/models-type';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Resena, Tour } from 'src/app/interface/models-type';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -14,7 +15,7 @@ import { TourService } from 'src/app/services/tour.service';
 })
 export class RegistrarResenaComponent implements OnInit {
 
-  mostrarFormularioResena: boolean = false;
+  showFormResena: boolean = false;
   listTour: Tour[] = [];
   user!: Usuario | null;
 
@@ -35,7 +36,7 @@ export class RegistrarResenaComponent implements OnInit {
 
 
   toggleFormulario(): void {
-    this.mostrarFormularioResena = !this.mostrarFormularioResena;
+    this.showFormResena = !this.showFormResena;
   }
 
   sendForm(): void {
@@ -58,13 +59,15 @@ export class RegistrarResenaComponent implements OnInit {
         fecha: new Date(),
       }
       this.resenaService.saveResena(resena).subscribe((resp) => {
-
+        this.formResena.reset();
+        this.formSend = false;
+        this.showFormResena = false;
+        alert("Reseña exitosa")
       })
     } else {
 
       return;
     }
-    this.toast.showNotification("Prueba", "Hola")
 
   }
 

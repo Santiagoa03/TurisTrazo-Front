@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { TipoUsuario, Usuario } from 'src/app/interface/models-type';
-import { filter, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -29,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
   guiaId: number = 0;
 
 
-  constructor(private authService: AuthService, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.authService
@@ -67,7 +68,9 @@ export class RegisterPageComponent implements OnInit {
       tipoUsuario: userType,
     }
 
-    this.authService.saveUser(user).subscribe((resp) => {
+    this.authService.saveUser(user).subscribe(() => {
+      this.router.navigateByUrl("/auth/login");
+      alert("Usuario Guardado con exito")
     })
 
   }
