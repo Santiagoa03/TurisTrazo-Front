@@ -24,11 +24,11 @@ export interface Tour {
 
 export interface Barrio {
     codigoPostal: number;
-    nombre: string;
+    nombre?: string;
 }
 
 export interface Guia {
-    id: number;
+    id?: number;
     ciudadResidencia: string;
     barrioResidencia: string;
     barrioGuia: Barrio;

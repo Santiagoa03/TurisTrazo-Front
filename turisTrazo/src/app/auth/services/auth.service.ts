@@ -57,8 +57,14 @@ export class AuthService {
     );
   }
 
-  saveUser(user: Usuario, guide?: Guia): Observable<HttpResponse<any>> {
-    return this.http.post<HttpResponse<any>>(`${this.URL_API}/register`, user);
+  saveUser(user: Usuario, guide?: Guia | null): Observable<HttpResponse<any>> {
+
+    const body = {
+      user: user,
+      guide: guide
+    }
+    console.log(body);
+    return this.http.post<HttpResponse<any>>(`${this.URL_API}/register`, body);
   }
 
   userType(): Observable<TipoUsuario[]> {
