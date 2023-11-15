@@ -1,0 +1,5 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+    <div *ngFor="let item of listaItems" style="height: 30rem;">
+        <sitio-interes-card [imagen]="item.imagen" [titulo]="item.titulo" [id]="item.id"></sitio-interes-card>
+    </div>
+</div>

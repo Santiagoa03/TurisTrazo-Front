@@ -26,7 +26,6 @@ export class ResenaListComponent implements OnInit {
 
   }
 
-
   getAllResenas() {
     this.resenaService.getAllResena().subscribe((resenas) => {
       this.listResena = resenas;

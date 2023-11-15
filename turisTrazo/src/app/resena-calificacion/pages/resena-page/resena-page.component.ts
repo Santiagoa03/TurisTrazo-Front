@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ResenaService } from '../../../services/resena.service';
-import { Resena } from 'src/app/interface/models-type';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -8,17 +6,12 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './resena-page.component.html',
   styleUrls: ['./resena-page.component.css']
 })
-export class ResenaPageComponent implements OnInit {
+export class ResenaPageComponent {
 
-  isTourist!: Boolean;
+  constructor(private authService: AuthService) { }
 
-  constructor(private resenaService: ResenaService, private authService: AuthService) { }
-
-
-  ngOnInit(): void {
-    this.isTourist = this.authService.isTourist();
+  get isTourist(): Boolean {
+    return this.authService.isTourist();
   }
-
-
 
 }
