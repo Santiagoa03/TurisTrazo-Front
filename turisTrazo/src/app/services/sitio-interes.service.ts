@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class SitioInteresService {
 
-  URL_API: string = "/api/sitio";
+  URL_API: string = "/api/interest-site";
+  URL_API_IMAGHN = "/api/images";
 
   private sitiosSubject = new Subject<any[]>();
   sitios$ = this.sitiosSubject.asObservable();
@@ -22,6 +23,18 @@ export class SitioInteresService {
         this.sitiosSubject.next(sitios);
       })
     );
+  }
+
+  findSitio(id: number): Observable<any> {
+    return this.http.get<any>(`${this.URL_API}/${id}`).pipe(
+      tap(() => {
+      })
+    );
+  }
+
+  getImages(nombreImagen: string) {
+    const url = `${nombreImagen}`;
+    return this.http.get(url, { responseType: 'blob' });
   }
 
   // Guardar un sitio de interés y emite actualizaciones

@@ -63,7 +63,6 @@ export class AuthService {
       user: user,
       guide: guide
     }
-    console.log(body);
     return this.http.post<HttpResponse<any>>(`${this.URL_API}/register`, body);
   }
 
