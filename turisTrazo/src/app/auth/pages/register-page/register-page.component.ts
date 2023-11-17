@@ -77,11 +77,9 @@ export class RegisterPageComponent implements OnInit {
       tipoUsuario: userType,
     }
 
-    console.log(userType);
-    console.log(this.guiaId);
-    console.log(Number(userType.id) === this.guiaId)
+  
     if (Number(userType.id) === this.guiaId) {
-      console.log("Entró")
+
       const neighborhoodGuide: Barrio = {
         codigoPostal: Number(this.formRegister.get("neighborhoodTour")?.value) || 0
       }
