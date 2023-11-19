@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { SitioInteres } from '../interface/models-type';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class SitioInteresService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   // Obtener todas los sitios de inter de la base de datos
-  getAllSitios(): Observable<any[]> {
+  getAllSitios(): Observable<SitioInteres[]> {
     return this.http.get<any[]>(`${this.URL_API}`).pipe(
       tap((sitios) => {
         this.sitiosSubject.next(sitios);
@@ -25,7 +26,7 @@ export class SitioInteresService {
     );
   }
 
-  findSitio(id: number): Observable<any> {
+  findSitio(id: number): Observable<SitioInteres> {
     return this.http.get<any>(`${this.URL_API}/${id}`).pipe(
       tap(() => {
       })

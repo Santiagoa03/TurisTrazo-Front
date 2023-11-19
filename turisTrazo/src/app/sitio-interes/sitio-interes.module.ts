@@ -8,7 +8,10 @@ import { SitioComponent } from './components/sitio/sitio.component';
 import { ShearchComponent } from './components/shearch/shearch.component';
 import { SitioListComponent } from './components/sitio-list/sitio-list.component';
 import { DetalleSitioComponent } from './components/detalle-sitio/detalle-sitio.component';
+import { DetalleSitioInteresComponent } from './pages/detalle-sitio-interes/detalle-sitio-interes.component';
+import { SharedModule } from '../shared/shared.module';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,11 +20,14 @@ import { DetalleSitioComponent } from './components/detalle-sitio/detalle-sitio.
     SitioComponent,
     ShearchComponent,
     SitioListComponent,
-    DetalleSitioComponent
+    DetalleSitioComponent,
+    DetalleSitioInteresComponent
   ],
   imports: [
     CommonModule,
     SitioInteresRoutingModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class SitioInteresModule { }

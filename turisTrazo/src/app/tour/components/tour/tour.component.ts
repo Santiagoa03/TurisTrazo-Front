@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class TourComponent {
 
+  prueba: string[] = ['hola','2','3','7','sa']
 }
