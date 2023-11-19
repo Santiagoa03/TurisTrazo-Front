@@ -6,6 +6,7 @@ import { ReservarTourComponent } from './pages/reservar-tour/reservar-tour.compo
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistrarTourComponent } from './components/registrar-tour/registrar-tour.component';
 import { TourComponent } from './components/tour/tour.component';
+import { TourCardComponent } from './components/tour-card/tour-card.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TourComponent } from './components/tour/tour.component';
     ReservarTourComponent,
     InicioComponent,
     RegistrarTourComponent,
-    TourComponent
+    TourComponent,
+    TourCardComponent
   ],
   imports: [
     CommonModule,

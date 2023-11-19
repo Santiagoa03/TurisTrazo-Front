@@ -49,3 +49,12 @@ export interface TipoUsuario {
     id: number;
     tipoUsuario?: string;
 }
+
+export interface SitioInteres {
+    id: number;
+    nombreSitio: string;
+    barrioMedellin: Barrio;
+    descripcion: string;
+    imagen: string;
+    imagenData?: string;
+}

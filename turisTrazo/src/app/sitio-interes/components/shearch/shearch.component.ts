@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'sitio-interes-shearch',
@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ShearchComponent {
 
+  @Output() terminoBusquedaEmitter = new EventEmitter<string>();
+
+
+  input: string = '';
+
+  search() {
+    this.terminoBusquedaEmitter.emit(this.input);
+  }
 }

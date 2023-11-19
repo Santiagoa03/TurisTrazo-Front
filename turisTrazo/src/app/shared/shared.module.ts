@@ -9,7 +9,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
 import { ServicioHomeComponent } from './components/servicio-home/servicio-home.component';
 import { CustomToastComponent } from './components/notification/notification.component';
-
+import { SliderComponent } from './components/slider/slider.component';
+import { ImageSliderComponent } from './components/imageSlider/imageSlider.component';
 
 
 @NgModule({
@@ -22,16 +23,20 @@ import { CustomToastComponent } from './components/notification/notification.com
     CardComponent,
     ServicioHomeComponent,
     CustomToastComponent,
+    SliderComponent,
+    ImageSliderComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports:[
     MenuComponent,
     FooterComponent,
     CardComponent,
-    CustomToastComponent
+    CustomToastComponent,
+    SliderComponent
+  
     
   ]
 })
