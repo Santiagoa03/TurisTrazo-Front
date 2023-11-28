@@ -7,7 +7,11 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistrarTourComponent } from './components/registrar-tour/registrar-tour.component';
 import { TourComponent } from './components/tour/tour.component';
 import { TourCardComponent } from './components/tour-card/tour-card.component';
-
+import { SharedModule } from '../shared/shared.module';
+import { DetalleTourComponent } from './components/detalle-tour/detalle-tour.component';
+import { ResenaCalificacionModule } from '../resena-calificacion/resena-calificacion.module';
+import { FormsModule } from '@angular/forms'; //
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +19,16 @@ import { TourCardComponent } from './components/tour-card/tour-card.component';
     InicioComponent,
     RegistrarTourComponent,
     TourComponent,
-    TourCardComponent
+    TourCardComponent,
+    DetalleTourComponent
   ],
   imports: [
     CommonModule,
-    TourRoutingModule
+    TourRoutingModule,
+    SharedModule,
+    ResenaCalificacionModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TourModule { }

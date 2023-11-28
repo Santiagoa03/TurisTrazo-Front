@@ -1,1 +1,111 @@
-<p>configuracion-usuario works!</p>
+<div class="flex min-h-full justify-center px-6 py-12 lg:px-8" *ngIf="usuario">
+    <div class="w-full max-w-screen-sm sh-per pr-10 pl-10 pt-7 pb-3 rounded-xl mx-auto">
+        <a routerLink="/home" class="justify-start flex"><i class="fa-solid fa-house fa-xl"></i></a>
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img class="mx-auto h-20 w-auto" src="/./assets/logo.png" alt="TurisTrazo">
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Datos del usuario
+            </h2>
+        </div>
+        <br><br>
+        <form class="grid grid-cols-1 gap-6" [formGroup]="formRegister">
+            <div class="col-span-2 sm:col-span-1">
+                <div> <label for="nombre" class="block text-sm font-medium leading-6 text-gray-900">Nombre
+                        Completo</label>
+                    <input id="nombre" name="nombre" type="text" autocomplete="name" required formControlName="nombre"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                </div>
+                <div> <label for="identidad" class="block text-sm font-medium leading-6 text-gray-900">Número
+                        Identidad</label>
+                    <input id="identidad" name="identidad" type="text" autocomplete="off" required
+                        formControlName="identidad"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required formControlName="email"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                </div>
+                <div>
+                    <label for="celular" class="block text-sm font-medium leading-6 text-gray-900">Número
+                        contacto</label>
+                    <input id="celular" name="celular" type="celular" autocomplete="phone" 
+                        formControlName="celular"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                </div>
+                <div>
+                    <label for="usuario" class="block text-sm font-medium leading-6 text-gray-900">Tipo de usuario
+                    </label>
+                    <input id="usuario" name="usuario" type="celular" autocomplete="text" 
+                        formControlName="usuario"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                </div>
+                <br>
+
+                <br>
+            </div>
+
+            <div class="col-span-1 sm:col-span-1">
+                <div *ngIf="cambiarContrasena">
+                    <div>
+                        <label for="contrasenaAntigua"
+                            class="block text-sm font-medium leading-6 text-gray-900">Contraseña
+                            Actual</label>
+                        <input id="contrasenaAntigua" name="contrasenaAntigua" type="password"
+                            autocomplete="current-password" formControlName="contrasenaAntigua"
+                            [ngClass]="{ 'ring-red-500': formRegister!.get('contrasenaAntigua')?.invalid && formSend }"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <ng-container *ngIf="formRegister!.get('contrasenaAntigua')?.hasError('required') && formSend">
+                            <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
+                        </ng-container>
+                    </div>
+                    <div>
+                        <label for="contrasenaNueva"
+                            class="block text-sm font-medium leading-6 text-gray-900">Contraseña
+                            Nueva</label>
+                        <input id="contrasenaNueva" name="contrasenaNueva" type="password"
+                            autocomplete="current-password" formControlName="contrasenaNueva"
+                            [ngClass]="{ 'ring-red-500': formRegister!.get('contrasenaNueva')?.invalid && formSend }"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                        <ng-container *ngIf="formRegister!.get('contrasenaNueva')?.hasError('required') && formSend">
+                            <ng-container *ngTemplateOutlet="errorMessage"></ng-container>
+                        </ng-container>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-span-2">
+                <button *ngIf="!cambiarContrasena" type="submit" class=" w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white
+                    shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
+                    focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    (click)="cambiarContrasenaV()">Cambiar
+                    contraseña</button>
+            </div>
+            <div class="col-span-1">
+                <button type="submit" *ngIf="cambiarContrasena"
+                    class="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    (click)="cambiarContrasenaV()">Cancelar cambio de contraseña</button>
+            </div>
+
+            <div class="col-span-1">
+                <button type="submit" *ngIf="cambiarContrasena"
+                    class="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    (click)="cambiarContrasenaValidacion()">Confirmar Cambio de
+                    contraseña</button>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+
+<ng-template #errorMessage>
+    <div class="text-red-500 text-sm">Este campo es requerido.</div>
+</ng-template>

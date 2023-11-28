@@ -1,1 +1,59 @@
-<p>registrar-tour works!</p>
+<div class="w-3/4 mx-auto border border-gray-300 shadow-md rounded-lg p-6 mt-10">
+    <form [formGroup]="tourForm" (ngSubmit)="sendTour()">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Campo: Nombre del Tour -->
+            <div class="mb-4">
+                <label for="tourName" class="block mb-1">Nombre del Tour</label>
+                <input type="text" id="tourName" name="tourName" formControlName="tourName"
+                    class="w-full border rounded-md px-3 py-2">
+            </div>
+
+            <!-- Campo: Descripción -->
+            <div class="mb-4">
+                <label for="description" class="block mb-1">Descripción</label>
+                <textarea id="description" name="description" formControlName="description"
+                    class="w-full border rounded-md px-3 py-2"></textarea>
+            </div>
+
+            <!-- Campo: Temperatura del Lugar -->
+            <div class="mb-4">
+                <label for="temperature" class="block mb-1">Temperatura del Lugar</label>
+                <input type="number" id="temperature" name="temperature" class="w-full border rounded-md px-3 py-2"
+                    formControlName="temperature">
+            </div>
+
+            <!-- Campo: Precio por Persona -->
+            <div class="mb-4">
+                <label for="pricePerPerson" class="block mb-1">Precio por Persona</label>
+                <input type="number" id="pricePerPerson" name="pricePerPerson"
+                    class="w-full border rounded-md px-3 py-2" formControlName="pricePerPerson">
+            </div>
+
+            <!-- Campo: Barrio (Select) -->
+            <div class="mb-4">
+                <label for="neighborhood" class="block mb-1">Barrio</label>
+                <select id="neighborhood" name="neighborhood" class="w-full border rounded-md px-3 py-2"
+                    formControlName="neighborhood">
+                    <option *ngFor="let barrio of barrios" [value]="barrio.codigoPostal">{{barrio.nombre}}</option>
+                    <!-- Agrega más opciones si es necesario -->
+                </select>
+            </div>
+
+            <!-- Campo: Insertar Varias Imágenes -->
+            <div class="mb-4">
+                <label for="images" class="block mb-1">Insertar imágenes del tour</label>
+                <input type="file" id="images" name="images" multiple class="w-full border rounded-md px-3 py-2"
+                    (change)="onImageChange($event)">
+            </div>
+
+        </div>
+
+     
+        <!-- Botón de Enviar -->
+        <div class="mt-6">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

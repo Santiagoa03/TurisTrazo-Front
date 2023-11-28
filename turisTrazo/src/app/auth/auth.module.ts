@@ -7,6 +7,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ConfiguracionUsuarioComponent } from './components/configuracion-usuario/configuracion-usuario.component';
 import { FormsModule } from '@angular/forms'; //
 import { ReactiveFormsModule } from '@angular/forms';
+import {  } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   exports: [
     RegisterPageComponent,

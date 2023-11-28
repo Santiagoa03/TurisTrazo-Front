@@ -26,6 +26,9 @@ import { ResenaListComponent } from './components/resena-list/resena-list.compon
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+  ],
+  exports:[
+    ResenasComponent
   ]
 })
 export class ResenaCalificacionModule { }

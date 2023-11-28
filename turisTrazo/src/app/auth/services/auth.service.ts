@@ -1,5 +1,5 @@
 import { CredentialsBearerService } from 'src/app/services/credentials-bearer.service';
-import { Guia, TipoUsuario, Usuario } from './../../interface/models-type';
+import { ChangePassword, Guia, TipoUsuario, Usuario } from './../../interface/models-type';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -57,6 +57,9 @@ export class AuthService {
     );
   }
 
+  getUserById(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.URL_API}/${id}`);
+  }
   saveUser(user: Usuario, guide?: Guia | null): Observable<HttpResponse<any>> {
 
     const body = {
@@ -74,6 +77,9 @@ export class AuthService {
     return this.http.get<Already>(`${this.URL_API}/verify/${email}`);
   }
 
+  changePassword(dataPassword: ChangePassword): Observable<HttpResponse<any>> {
+    return this.http.post<HttpResponse<any>>(`${this.URL_API}/change-password`, dataPassword)
+  }
 
   isLoggued(): Boolean {
     if (!this.cookie.get("Bearer")) return false;
@@ -117,5 +123,9 @@ export class AuthService {
 
   getHttpOptionsHeader() {
     return this.options.headers;
+  }
+
+  resetPassword(email: string): Observable<HttpResponse<any>> {
+    return this.http.post<HttpResponse<any>>(`${this.URL_API}/reset`, email)
   }
 }

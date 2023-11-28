@@ -12,7 +12,10 @@ import { ResenaService } from 'src/app/services/resena.service';
 export class ResenaListComponent implements OnInit {
 
   listResena: Resena[] = [];
-  private subscription!: Subscription;
+  private subscription!: Subscription;;
+
+  slideIndex = 0;
+  slideWidth = 300; // Ancho de cada slide (ajustar según diseño)
 
   constructor(private resenaService: ResenaService) { }
 
@@ -23,9 +26,20 @@ export class ResenaListComponent implements OnInit {
     });
 
     this.getAllResenas();
-
+    this.startSlider();
   }
 
+  get extendedListResena() {
+    // Duplicar la lista para que se repitan las tarjetas al final
+    return [...this.listResena, ...this.listResena];
+  }
+
+  startSlider() {
+    setInterval(() => {
+      this.slideIndex = (this.slideIndex + 1) % this.listResena.length;
+    }, 2000); // Cambia el número para ajustar la velocidad del desplazamiento
+  }
+  
   getAllResenas() {
     this.resenaService.getAllResena().subscribe((resenas) => {
       this.listResena = resenas;

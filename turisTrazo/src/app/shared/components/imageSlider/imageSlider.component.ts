@@ -7,6 +7,7 @@ import {
   switchMap,
   timer,
 } from 'rxjs';
+import { Imagen } from 'src/app/interface/models-type';
 
 export interface SlideInterface {
   url: string;
@@ -19,7 +20,7 @@ export interface SlideInterface {
   styleUrls: ['./imageSlider.component.css'],
 })
 export class ImageSliderComponent implements OnInit, OnDestroy {
-  @Input() slides: SlideInterface[] = [];
+  @Input() slides: Imagen[] = [];
 
   currentIndex: number = 0;
   timeoutId?: number;
@@ -61,6 +62,6 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   }
 
   getCurrentSlideUrl() {
-    return `url('${this.slides[this.currentIndex].url}')`;
+    return `url('${this.slides[this.currentIndex].imagenData}')`;
   }
 }

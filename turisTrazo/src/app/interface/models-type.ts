@@ -15,11 +15,16 @@ export interface Credenciales {
 }
 
 export interface Tour {
-    id: number;
+    id?: number;
     barrioMedellin?: Barrio;
     guia?: Guia;
     descripcion?: string;
-    nombre?: string;
+    nombre: string;
+    imagen: string;
+    imagenData?: string;
+    precioPersona?: number;
+    validado?: boolean;
+    temperatura?: string;
 }
 
 export interface Barrio {
@@ -57,4 +62,37 @@ export interface SitioInteres {
     descripcion: string;
     imagen: string;
     imagenData?: string;
+    temperatura?: string;
+    horario?: string;
+}
+
+export interface Imagen {
+    id: number;
+    imagen: string;
+    imagenData?: string;
+}
+
+export interface ImagenData {
+    id: number;
+    isSitio: Boolean;
+}
+
+export interface ReservarTour {
+    id: number;
+    tour: Tour;
+    fecha: string;
+    numeroPersonas: number;
+    numeroContacto: string;
+    precioEstimado: string;
+}
+
+export interface ChangePassword {
+    id: number;
+    newPassword: string;
+    oldPassword: string;
+}
+
+export interface ImagenSave {
+    tour: Tour;
+    nameImages: string[];
 }

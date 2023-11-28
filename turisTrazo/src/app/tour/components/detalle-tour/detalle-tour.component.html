@@ -1,0 +1,91 @@
+<!-- tour.component.html -->
+
+<div class="bg-gray-100 min-h-screen p-8" *ngIf="validado">
+  <div class="max-w-4xl mx-auto">
+
+    <br>
+    <!-- Título del tour -->
+    <h1 class="text-4xl font-bold mb-4 text-center">{{tour.nombre}}</h1>
+    <h2 class="text-lg mb-4 text-center text-gray-700">{{tour.barrioMedellin?.nombre}}- {{tour.guia?.usuario?.nombre}}
+    </h2>
+
+    <!-- Descripción e información general del tour -->
+    <div class=" mb-8">
+      <p class="text-lg mb-4">{{tour.descripcion}}</p>
+      <!-- Agrega la información general del tour aquí -->
+    </div>
+
+    <br><br>
+    <!-- Slider de imágenes -->
+    <section *ngIf="validado && validadoSlider">
+      <div class=" h-2/4 m-auto">
+        <shared-slider [images]="imagenes"></shared-slider>
+      </div>
+    </section>
+    <br><br>
+    <!-- Formulario para ingresar información de fecha y número de personas -->
+    <form [formGroup]="formTour" (ngSubmit)="contactarGuia()" class="mb-8" *ngIf="turista">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:w-1/2 md:mr-4">
+          <label for="fecha-reserva" class="block text-gray-700 font-semibold mb-2">Fecha de reserva:</label>
+          <input formControlName="fechaReserva" type="date" id="fecha-reserva" name="fecha-reserva"
+            class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
+            [class.border-red-500]="formTour.get('fechaReserva')?.invalid && (formTour.get('fechaReserva')?.dirty || formTour.get('fechaReserva')?.touched)">
+        </div>
+        <div class="mb-4 md:w-1/2 md:ml-4">
+          <label for="numero-personas" class="block text-gray-700 font-semibold mb-2"
+            (input)="calcularPrecioTotal()">Número de personas:</label>
+          <input formControlName="numeroPersonas" type="number" id="numero-personas" name="numero-personas"
+            class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
+            [class.border-red-500]="formTour.get('numeroPersonas')?.invalid && (formTour.get('numeroPersonas')?.dirty || formTour.get('numeroPersonas')?.touched)">
+        </div>
+      </div>
+
+      <!-- Campo para mostrar el precio estimado -->
+      <div class="mb-4">
+        <label for="precio-estimado" class="block text-gray-700 font-semibold mb-2">Precio estimado:</label>
+        <input type="number" id="precio-estimado" name="precio-estimado" formControlName="precioEstimado" type="number"
+          id="precio-estimado" name="precio-estimado"
+          class="w-full px-4 py-2 rounded-md border border-gray-300 bg-gray-200 focus:outline-none">
+        <!-- Agrega el precio estimado aquí -->
+      </div>
+
+      <div class="mb-4">
+        <label for="numero-contacto" class="block text-gray-700 font-semibold mb-2">Número de contacto:</label>
+        <input formControlName="numeroContacto" type="number" id="numero-contacto" name="numero-contacto"
+          class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
+          [class.border-red-500]="formTour.get('numeroPersonas')?.invalid && (formTour.get('numeroPersonas')?.dirty || formTour.get('numeroPersonas')?.touched)">
+      </div>
+
+      <button type="submit"
+        class="bg-indigo-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-indigo-600 transition duration-300 block mx-auto">
+        Contactar Guía
+      </button>
+    </form>
+
+
+    <div class="div">
+      <div class="text-center mb-4 mt-2" *ngIf="!turista && !logueado">
+        <h2 class="text-xl">Inicia sesión para contactar guía del tour <a routerLink="/auth/login" class="underline text-indigo-600 ">Iniciar Sesión</a></h2>
+
+      </div>
+    </div>
+    <br><br>
+
+  </div>
+  <div class="text-center mb-4 mt-2" *ngIf="resenasValidado">
+    <h2 class="text-4xl font-bold">Calificaciones del tour</h2>
+  </div>
+  <div class="overflow-hidden bg-gray-200 w-11/12 m-auto mt-2" *ngIf="resenasValidado">
+    <div class="flex transition-transform ease-linear duration-300"
+      [style.transform]="'translateX(' + (-slideIndex * slideWidth) + 'px)'">
+      <ng-container *ngFor="let resena of extendedListResena">
+        <div class="flex-none w-1/4 px-2">
+          <resenas-card [resena]="resena"></resenas-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+
+</div>

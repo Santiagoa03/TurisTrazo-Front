@@ -46,7 +46,9 @@ export class RegistrarResenaComponent implements OnInit {
     this.user = this.authService.getUser();
     if (this.user != null && this.user != undefined) {
       const tour: Tour = {
-        id: this.formResena.get("tour")?.value || 0
+        id: this.formResena.get("tour")?.value || 0,
+        imagen: '',
+        nombre: ''
       }
       const resena: Resena = {
         id: 35,

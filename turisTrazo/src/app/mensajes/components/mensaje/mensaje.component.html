@@ -1,0 +1,41 @@
+<!-- component -->
+<div class="text-gray-900 bg-gray-200  m-auto w-11/12 overflow-scroll">
+  <div class="p-4 flex">
+    <h1 class="text-3xl m-auto font-bold">
+      Mensajes recibidos
+    </h1>
+  </div>
+  <div class="px-3 py-4 flex justify-center">
+    <table class="w-full text-md bg-white shadow-md rounded mb-4">
+      <tbody>
+        <tr class="border-b">
+          <th class="text-left p-3 px-5">Tour</th>
+          <th class="text-left p-3 px-5">Número de Personas</th>
+          <th class="text-left p-3 px-5">Fecha</th>
+          <th class="text-left p-3 px-5">Precio Total Estimado</th>
+          <th class="text-left p-3 px-5">Número de contacto</th>
+          <th class="text-left p-3 px-5">Acciones</th>
+
+          <th></th>
+        </tr>
+        <tr class="border-b hover:bg-orange-100 bg-gray-100" *ngFor="let reserva of listReservas">
+          <td class="p-3 px-5">{{reserva.tour.nombre}}</td>
+          <td class="p-3 px-5">{{reserva.numeroPersonas}} </td>
+          <td class="p-3 px-5">{{reserva.fecha | date}} </td>
+          <td class="p-3 px-5">{{reserva.precioEstimado | number}} </td>
+          <td class="p-3 px-5">{{reserva.numeroContacto}} </td>
+
+          <td class="p-3 px-5 flex justify-start"><button type="button"
+              class="mr-3 text-sm bg-green-800 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              (click)="contactar(reserva.numeroContacto)">Contactar <i class="fa-brands fa-whatsapp"
+                style="color: #fff;"></i></button>
+
+            <button type="button" (click)="eliminar(reserva.id)"
+              class="mr-3 text-sm bg-red-600 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

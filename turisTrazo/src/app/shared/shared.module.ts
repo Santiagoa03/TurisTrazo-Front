@@ -11,6 +11,7 @@ import { ServicioHomeComponent } from './components/servicio-home/servicio-home.
 import { CustomToastComponent } from './components/notification/notification.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { ImageSliderComponent } from './components/imageSlider/imageSlider.component';
+import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ImageSliderComponent } from './components/imageSlider/imageSlider.compo
     ServicioHomeComponent,
     CustomToastComponent,
     SliderComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,

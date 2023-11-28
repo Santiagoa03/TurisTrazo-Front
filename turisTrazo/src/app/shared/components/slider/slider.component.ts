@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Imagen } from 'src/app/interface/models-type';
 
 export interface SlideInterface {
   url: string;
@@ -12,8 +13,8 @@ export interface SlideInterface {
 })
 export class SliderComponent {
 
-  slides: SlideInterface[] = [
-    { url: '/./assets/guatape.jpg', title: 'beach' },
-    { url: '/./assets/comuna-13.jpg', title: 'boat' },
-  ];
+  @Input() images: Imagen[] = [];
+
+  constructor() {}
+
 }

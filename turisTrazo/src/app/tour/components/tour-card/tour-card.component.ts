@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'tour-card',
   templateUrl: './tour-card.component.html',
   styleUrls: ['./tour-card.component.css']
 })
-export class TourCardComponent implements OnInit {
+export class TourCardComponent {
+
+  @Input()
+  imagen!: string;
+
+  @Input()
+  titulo!: string;
+
+  @Input()
+  sitio!: string;
+
+
+  @Input()
+  id!: number;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

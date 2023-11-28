@@ -14,6 +14,9 @@ export class ResenaService {
   private resenasSubject = new Subject<Resena[]>();
   resenas$ = this.resenasSubject.asObservable();
 
+  private resenasSubjectById = new Subject<Resena[]>();
+  resenasId$ = this.resenasSubjectById.asObservable();
+
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   // Obtener todas las reseñas de la base de datos
@@ -24,6 +27,16 @@ export class ResenaService {
       })
     );
   }
+
+
+  getAllResenaByTourId(id: number): Observable<Resena[]> {
+    return this.http.get<Resena[]>(`${this.URL_API}/${id}`).pipe(
+      tap((resenas) => {
+        this.resenasSubjectById.next(resenas);
+      })
+    );
+  }
+
 
   // Guardar una reseña y emitir actualizaciones
   saveResena(resena: Resena): Observable<any> {

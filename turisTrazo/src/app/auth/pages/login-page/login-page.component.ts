@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Credenciales } from 'src/app/interface/models-type';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -19,7 +20,7 @@ export class LoginPageComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private authService: AuthService, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private toast: ToastrService) { }
 
   sendFormLogin(): void {
     this.formSend = true;
@@ -32,6 +33,20 @@ export class LoginPageComponent {
 
     this.authService.login(this.credenciales);
 
+  }
+
+  resetPassword(): void {
+
+    if (this.formLogin.get("email")?.invalid) {
+      this.toast.error("ingrese un correo válido");
+    } else {
+      const email: string = this.formLogin.get("email")?.value || '';
+      this.authService.resetPassword(email).subscribe(() => {
+        this.toast.success("Se ha enviado un correo con la recuperación de la contraseña");
+      }, () => {
+        this.toast.error("Error al recuperar contraseña");
+      })
+    }
   }
 
 }

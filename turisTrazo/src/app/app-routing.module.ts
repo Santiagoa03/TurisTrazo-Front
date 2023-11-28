@@ -35,6 +35,16 @@ const routes: Routes = [
 
   },
   {
+    path: 'mensajes',
+    loadChildren: () => import('./mensajes/mensajes.module').then((m) => m.MensajesModule),
+
+  },
+  {
+    path: 'gestionar',
+    loadChildren: () => import('./gestion-admin/gestion-admin.module').then((m) => m.GestionAdminModule),
+
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },

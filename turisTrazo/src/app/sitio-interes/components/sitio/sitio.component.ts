@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'sitio-interes-card',
   templateUrl: './sitio.component.html',
-  styles: [
-  ]
+  styleUrls: ['./sitio.component.css']
+
 })
 export class SitioComponent {
 

@@ -13,11 +13,19 @@ export class MenuComponent implements OnInit {
   isCollapsed: boolean = false;
   isLoggued!: Boolean;
   userLoggued!: Usuario | null;
+  guiaLoggued!: Boolean;
+  adminLoggued!: Boolean;
+
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggued = this.authService.isLoggued();
     this.userLoggued = this.authService.getUser();
+    this.adminLoggued = this.authService.isAdmin();
+    
+    if (this.isLoggued) {
+      this.guiaLoggued = this.authService.isGuide();
+    }
   }
 
   toggleNavbar() {

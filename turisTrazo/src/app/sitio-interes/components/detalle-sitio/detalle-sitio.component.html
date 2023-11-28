@@ -48,7 +48,7 @@
             <h2 class="text-white text-lg font-bold">Temperatura
                 <br>
                 <p class="text-sm font-semibold">
-                    {{sitio.barrioMedellin.nombre}}
+                    {{sitio.temperatura}}
 
                 </p>
             </h2>
@@ -60,7 +60,7 @@
             <h2 class="text-white text-lg font-bold">Horario
                 <br>
                 <p class="text-sm font-semibold">
-                    {{sitio.barrioMedellin.nombre}}
+                    {{sitio.horario}}
 
                 </p>
             </h2>
@@ -69,16 +69,16 @@
     <br>
     <br>
 </section>
-
-<section>
-    <br><br>
-    <shared-slider></shared-slider>
+<br><br>
+<section *ngIf="validado && validadoSlider">
+    <div class="w-3/5 h-2/4 m-auto">
+        <shared-slider [images]="imagenes"></shared-slider>
+    </div>
 </section>
 
-<section class="w-3/5 m-auto">
+<section class="w-3/5 m-auto" *ngIf="validado">
     <br><br>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sint voluptas numquam laudantium dolorem unde
-        minima odio aspernatur, esse amet nostrum nesciunt id hic eum eveniet atque et accusamus molestias.
+        {{sitio.descripcion}}
     </p>
 </section>

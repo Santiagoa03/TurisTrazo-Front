@@ -1,0 +1,50 @@
+<!-- component -->
+<div class="text-gray-900 bg-gray-200  m-auto w-11/12 overflow-scroll">
+  <div class="p-4 flex">
+    <h1 class="text-3xl m-auto font-bold">
+      Gestión de tour
+    </h1>
+  </div>
+  <div class="px-3 py-4 flex justify-center">
+    <table class="w-full text-md bg-white shadow-md rounded mb-4">
+      <tbody>
+        <tr class="border-b">
+
+          <th class="text-left p-3 px-5">id </th>
+          <th class="text-left p-3 px-5">Nombre </th>
+          <th class="text-left p-3 px-5">Guía</th>
+          <th class="text-left p-3 px-5">Barrio</th>
+          <th class="text-left p-3 px-5">Descripción</th>
+          <th class="text-left p-3 px-5">Precio Persona</th>
+          <th class="text-left p-3 px-5">Acciones</th>
+
+          <th></th>
+        </tr>
+        <tr class="border-b hover:bg-orange-100 bg-gray-100" *ngFor="let tour of tourNoValidate">
+          <td class="p-3 px-5">{{tour.id}}</td>
+          <td class="p-3 px-5">{{tour.nombre}}</td>
+          <td class="p-3 px-5">{{tour.guia?.usuario?.nombre}} </td>
+          <td class="p-3 px-5">{{tour.barrioMedellin?.nombre }} </td>
+          <td class="p-3 px-5">{{tour.descripcion }} </td>
+          <td class="p-3 px-5">{{tour.precioPersona}} </td>
+
+          <td class="p-3 px-5 flex justify-start"><button type="button" (click)="verTour(tour.id || 0)"
+              class="mr-3 text-sm bg-indigo-600 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Ver
+              detalles</button>
+
+            <button type="button"
+              class="mr-3 text-sm bg-green-900 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              (click)="aprobar(tour)">Aprobar</button>
+
+            <button type="button"
+              class="mr-3 text-sm bg-red-600 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              (click)="eliminar(tour.id || 0)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="m-auto text-center" *ngIf="tourNoValidate.length === 0">
+    No hay datos
+  </div>
+</div>
