@@ -1,4 +1,4 @@
-# 🌎 Turistrazo - Frontend
+<img width="1301" height="705" alt="image" src="https://github.com/user-attachments/assets/fa7a17fd-9f97-4070-a863-1d71eca3edc8" /># 🌎 Turistrazo - Frontend
 
 **Turistrazo** es una aplicación web enfocada en promover el turismo local mediante una experiencia interactiva que conecta usuarios con destinos, rutas y actividades personalizadas.  
 Este repositorio contiene el **frontend**, desarrollado con **Angular 15**, **TailwindCSS** y **PrimeNG**, diseñado para ofrecer una interfaz moderna, responsiva y fácil de usar.
@@ -49,3 +49,10 @@ Características Principales
 - Diseño responsivo con TailwindCSS y PrimeNG
 
 - Manejo de notificaciones con Toastr
+
+
+Imágenes de la plataforma
+
+<img width="1301" height="705" alt="image" src="https://github.com/user-attachments/assets/bfd068bd-9e36-4645-b919-12a00af12017" />
+
+
